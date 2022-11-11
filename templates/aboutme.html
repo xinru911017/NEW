@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>李心如簡介</title>
+	<style type="text/css">
+		* { font-family:"標楷體"; margin-left:auto; margin-right:auto;}
+		h1 {color:rgb(84, 84, 175); font-size:60px;}
+		h2 {color:#bc5050; font-size:40px;}
+	</style>
+
+	<script>
+		function change1() {
+  			document.getElementById("pic").src = "../static/img/cat.jpg";
+  			document.getElementById("h2text").innerText = "資管二B";
+		}
+
+		function change2() {
+  			document.getElementById("pic").src = "../static/img/cat_2.jpg";
+  			document.getElementById("h2text").innerText = "Xin-Ru Li";
+		}
+	</script>
+</head>
+<body>
+	<table width="70%">
+		<tr>
+			<td>
+				<img src="../static/img/cat.jpg" width="110%" id="pic" onmouseover="change1()" onmouseout="change2()"></img>
+			</td>
+
+			<td>
+				<h1 style="text-align: center;">自我介紹</h1>
+				<h2 style="margin: auto;">李心如</h2>
+				<h4 style="margin: auto;">Xin-Ru Li</h4><br>
+			</td>
+		</tr>
+	</table>
+	<div>
+		<table width="70%" border="1">
+			<tr>
+				<td>
+					個人網頁：<a href="https://www1.pu.edu.tw/~411022920">https://www1.pu.edu.tw/~411022920</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					E-Mail:<a href="mailto:s1102292@gm.pu.edu.tw"></a> s1102292@gm.pu.edu.tw
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Tel_靜宜住宿服務組:<a href="tel:04-26328001,11243">04-26328001 #11243
+				</td>
+			</tr>
+			<tr>
+				<td>
+					YouTube:<a href="https://www.youtube.com/" target="_blank">https://www.youtube.com</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					大象席地而坐電影配樂<br>
+					<audio controls>
+						<source src="../static/video/elephant.mp3" type="audio/mP3">
+					</audio><br>
+				</td>
+			</tr>
+			<tr>
+				<td >
+					不要去臺灣<br>
+					<iframe src="https://www.youtube.com/embed/pW88QFpHXa8" allowfullscreen></iframe>
+				</td>
+			</tr>
+		</table>
+	</div>		
+</body>
+</html>
