@@ -143,8 +143,8 @@ def webhook():
         elif (rate == "輔15級"):
             rate = "輔導級(未滿十五歲之人不得觀賞)"
         info = "您選擇的電影分級是：" + rate 
-        info = "相關電影⬇️⬇️⬇️"
-
+        info += "相關電影⬇️⬇️⬇️\n\n"
+        
         collection_ref = db.collection("心如電影")
         docs = collection_ref.get()
         result = ""
@@ -152,6 +152,7 @@ def webhook():
             dict = doc.to_dict()
             if rate in dict["rate"]:
                 result += "片名：" + dict["title"] + "\n"
+                result += "\n123"
                 result += "介紹：" + dict["hyperlink"] + "\n\n"
         info = info + "\n" + result
     elif (action == "MovieDetail"): 
