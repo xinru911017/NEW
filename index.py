@@ -7,7 +7,7 @@ cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response, jsonify
 from datetime import datetime, timezone, timedelta
 app = Flask(__name__)
 
@@ -132,6 +132,15 @@ def search_movie():
     else:  
         return render_template("search_movie.html")
 
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    req = request.get_json(force=True)
+    action =  req.get("queryResult").get("action")
+    msg =  req.get("queryResult").get("queryText")
+    info = "動作：" + action + "； 查詢內容：" + msg
+    return make_response(jsonify({"fulfillmentText": info}))
+
+
 @app.route("/")
 def index():
     homepage = "<h1>李心如 Python 網頁</h1>"
@@ -143,7 +152,8 @@ def index():
     homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
     homepage += "<br><a href=/movie target = _blank>讀取開眼電影即將上映影片，寫入Firestore</a><br>"
     homepage += "<a href=/search_movie target = _blank>電影查詢</a><br>"
+    homepage += "<a href=/webhook target = _blank>對話機器人</a><br>"
     return homepage
 
-# if __name__ == "__main__":
-#     app.run()
+if __name__ == "__main__":
+    app.run()
