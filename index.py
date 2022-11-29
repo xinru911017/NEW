@@ -153,7 +153,7 @@ def webhook():
             if rate in dict["rate"]:
                 result += "片名：" + dict["title"] + "\n"
                 result += "介紹：" + dict["hyperlink"] + "\n\n"
-        info += result
+        info = info + "\n" + result
     elif (action == "MovieDetail"): 
         cond =  req.get("queryResult").get("parameters").get("FilmQ")
         keyword =  req.get("queryResult").get("parameters").get("any")
