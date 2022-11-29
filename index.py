@@ -142,19 +142,17 @@ def webhook():
             rate = "輔導級(未滿十二歲之兒童不得觀賞)"
         elif (rate == "輔15級"):
             rate = "輔導級(未滿十五歲之人不得觀賞)"
-        info = "您選擇的電影分級是：" + rate 
-        info += "相關電影⬇️⬇️⬇️\n\n"
-        
+        info = "您選擇的電影分級是：" + rate + "相關電影⬇️⬇️⬇️"
+
         collection_ref = db.collection("心如電影")
         docs = collection_ref.get()
         result = ""
         for doc in docs:
             dict = doc.to_dict()
             if rate in dict["rate"]:
-                result += "片名：" + dict["title"] + "\n"
-                result += "\n123"
+                result += "\n\n片名：" + dict["title"] + "\n"
                 result += "介紹：" + dict["hyperlink"] + "\n\n"
-        info = info + "\n" + result
+        info += result
     elif (action == "MovieDetail"): 
         cond =  req.get("queryResult").get("parameters").get("FilmQ")
         keyword =  req.get("queryResult").get("parameters").get("any")
