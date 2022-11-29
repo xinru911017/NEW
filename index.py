@@ -135,8 +135,8 @@ def search_movie():
 @app.route("/webhook", methods=["POST"])
 def webhook():
     req = request.get_json(force=True)
-    action =  req.get("queryResult").get("action")
-    msg =  req.get("queryResult").get("queryText")
+    action =  req["queryResult"]["action"]
+    msg =  req["queryResult"]["queryText"]
     info = "動作：" + action + "； 查詢內容：" + msg
     return make_response(jsonify({"fulfillmentText": info}))
 
@@ -155,5 +155,5 @@ def index():
     homepage += "<a href=/webhook target = _blank>對話機器人</a><br>"
     return homepage
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()
